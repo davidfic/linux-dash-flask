@@ -4,10 +4,6 @@ from app import data_gathering
 
 manager = Manager(app)
 
-
-@manager.command
-def hello():
-	print "it works"
 @manager.command
 def run():
     app.run(debug=True, host='0.0.0.0')
