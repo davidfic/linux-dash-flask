@@ -1,2 +1,4 @@
 *.pyc
+_site
 app/static/bower_components
+Gemfile*
