@@ -170,10 +170,18 @@
 <!--               <div id="refresh-whereis" onClick="javascript:get_ip();" class="btn btn-mini">
                 <i class="icon-refresh"></i> &nbsp;&nbsp;Refresh
               </div>
- -->            </div>
+              -->
+            </div>
             <!-- /widget-header -->
             <div class="widget-content">
                 <table id="ip_dashboard" class="table table-hover table-condensed table-bordered" >
+                {% for row in ip %}
+                  <tr>
+                  {% for item in row %}
+                    <td>{{item}}</td>
+                  {% endfor %}
+                  </tr>
+                {% endfor %}
                 </table>
             </div>
             <!-- /widget-content --> 
