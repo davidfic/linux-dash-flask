@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block nav %}
+
+<div class="navbar navbar-fixed-top" style="">
+    <div class="navbar-inner"> 
+    <div class="container"> 
+        
+        <a class="navbar-brand" href="index.html">Linux Bootstrap Dashboard </a>
+      <div class="navbar-collapse">
+            
+      </div>
+      <!--/.nav-collapse --> 
+    </div>
+    <!-- /container --> 
+   </div>
+  <!-- /div> -->
+</div>
+<!-- /navbar -->
+<div class="subnavbar visible-lg visible-sm navbar-fixed-top">
+  <div class="subnavbar-inner">
+    <div class="container">
+      <ul class="mainnav">
+        <li><a href="#refresh-os"><i class="icon-dashboard"></i><span>General</span> </a> </li>
+        <li><a href="#refresh-df"><i class="icon-list-alt"></i><span>Disk</span> </a> </li>
+        <li><a href="#refresh-ps"><i class="icon-list-alt"></i><span>CPU</span> </a> </li>
+        <li><a href="#refresh-ram"><i class="icon-list-alt"></i><span>RAM</span> </a> </li>
+        <li><a href="#refresh-users"><i class="icon-group"></i><span>Users</span> </a> </li>
+        <li><a href="#refresh-ispeed"><i class="icon-exchange"></i><span>Network</span> </a> </li>
+      </ul>
+    </div>
+    <!-- /container --> 
+  </div>
+  <!-- /subnavbar-inner --> 
+</div>
+
+{% endblock %}
+
+

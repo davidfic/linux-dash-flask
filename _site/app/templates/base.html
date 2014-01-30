@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Linux Dash</title>
+    <script src="{{url_for('static', filename='js/jquery.js')  }}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+   <!-- <script src="{{url_for('static', filename='js/magic_happens_here.js')}}"></script> -->
+    <script src="{{url_for('static', filename='js/odometer.js')}}"></script>
+    <link rel="stylesheet" href={{url_for('static', filename='css/bootstrap.css')}}>
+    <link rel="stylesheet" href={{url_for('static', filename='css/odometer.css')}}>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+    <link rel="stylesheet" href={{url_for('static', filename='css/style.css')}}>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href={{url_for('static', filename='css/dashboard.css')}} rel="stylesheet">
+</head>
+<body>
+
+{% block nav %}
+
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+
+</body>
+</html>
