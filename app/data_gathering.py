@@ -1,7 +1,7 @@
 import os
 import subprocess as sub
 from subprocess import PIPE
-
+import requests
 def get_os():
     return sub.check_output('uname -a',shell=True)
 
@@ -28,9 +28,8 @@ def get_ip():
     local_interfaces_linear = sub.check_output(cmd, shell=True).split()
     
     local_interfaces_linear.append("external")
-    #  Didn't want to add a dependency on Requests, but the right way to do this would be the following:
-    # local_interfaces_linear.push(requests.get("http://ipecho.net/plain").text)
-    local_interfaces_linear.append(sub.check_output("curl http://ipecho.net/plain", shell=True))
+    local_interfaces_linear.append(requests.get("http://ipecho.net/plain").text)
+    
 
     interfaces = []
     this_interface = []
