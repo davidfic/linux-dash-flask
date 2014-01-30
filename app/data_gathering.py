@@ -6,13 +6,16 @@ def get_os():
     return sub.check_output('uname -a',shell=True)
 
 def get_disk_usage():
-    cmd = "df -h |awk '{print $1, $2, $3, $4, $5, $6, $7, $9}'"  
+    cmd = "df -hP"  
 
     disk_usage = sub.check_output(cmd, shell=True)
     disk_list = []
     
-    for s in disk_usage.splitlines():
-        disk_list.append(s)
+    for line in disk_usage.splitlines():
+        # We don't want to split the last header on a space, or we will have
+        #  one extra column.
+        line = line.replace("Mounted on", "Mountpoint")
+        disk_list.append(line.split())
     
     return disk_list
 
@@ -30,3 +33,4 @@ def get_inet_speed():
 
 def get_running_processes():
     pass
+

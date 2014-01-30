@@ -101,10 +101,13 @@
  -->            </div>
             <!-- /widget-header -->
             <div class="widget-content">
-                <div class="btn btn-error">Test</div>
               <table id="df_dashboard" class="table table-hover table-condensed table-bordered" >
-                {% for item in disk %}
-                    <tr><td>{{item}}</td></tr>
+                {% for row in disk %}
+                  <tr>
+                  {% for item in row %}
+                    <td>{{item}}</td>
+                  {% endfor %}
+                  </tr>
                 {% endfor %}
 
               </table>
