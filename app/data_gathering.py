@@ -2,6 +2,9 @@ import os
 import subprocess as sub
 from subprocess import PIPE
 import requests
+
+import utility
+
 def get_os():
     return sub.check_output('uname -a',shell=True)
 
@@ -33,8 +36,7 @@ def get_ip():
 
     interfaces = []
     this_interface = []
-    count = 0
-    for token in local_interfaces_linear:
+    for count, token in enumerate(local_interfaces_linear):
         if count % 2:
             # Odd items - IPs, the second of each inner array
             this_interface.append(token)
@@ -42,7 +44,6 @@ def get_ip():
         else:
             # Even items - interface names, the first item
             this_interface = [token]
-        count += 1
             
     return interfaces
 
@@ -55,3 +56,10 @@ def get_inet_speed():
 def get_running_processes():
     pass
 
+def get_uptime():
+    seconds_up = sub.check_output("cat /proc/uptime | cut -d' ' -f1", shell=True)
+    time_units = ["seconds", "minutes", "hours", "days", "years"]
+    time_string = ""
+    for quantity, unit in zip(utility.split_seconds(seconds_up), time_units):
+        time_string = "{0} {1} {2}".format(quantity, unit, time_string)
+    return time_string

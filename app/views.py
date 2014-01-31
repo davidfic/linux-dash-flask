@@ -12,4 +12,5 @@ def index():
     return render_template("index.html",
         disk=dg.get_disk_usage(),
         os=dg.get_os(),
-        ip=dg.get_ip())
+        ip=dg.get_ip(),
+        uptime=dg.get_uptime())

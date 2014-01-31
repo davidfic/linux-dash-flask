@@ -16,5 +16,18 @@ def test_os():
 def get_disk_usage():
     return data_gathering.get_disk_usage()
 
+@manager.command
+def get_users():
+    return data_gathering.get_users()
+
+@manager.command
+def get_ip():
+    return data_gathering.get_ip()
+
+@manager.command
+def get_uptime():
+    return data_gathering.get_uptime()
+
+
 if __name__ == '__main__':
         manager.run()
