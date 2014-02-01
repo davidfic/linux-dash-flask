@@ -66,7 +66,7 @@ def get_uptime():
         hour_minute_up = sub.check_output("uptime | cut -d' ' -f6", shell=True)
         hm_up = hour_minute_up[:-2]+":00"
         seconds_from_days  = (60*60*24)*int(days_up)
-        x = time.strptime('10:13:00'.split(',')[0],'%H:%M:%S')
+        x = time.strptime(hm_up.split(',')[0],'%H:%M:%S')
         seconds = datetime.timedelta(hours=x.tm_hour,minutes=x.tm_min,seconds=x.tm_sec).total_seconds()
         seconds_up = seconds + seconds_from_days
     elif _platform == "win32":
