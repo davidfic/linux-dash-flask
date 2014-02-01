@@ -2,6 +2,7 @@ import os
 import subprocess as sub
 from subprocess import PIPE
 import requests
+from sys import platform as _platform
 
 import utility
 
@@ -57,7 +58,12 @@ def get_running_processes():
     pass
 
 def get_uptime():
-    seconds_up = sub.check_output("cat /proc/uptime | cut -d' ' -f1", shell=True)
+    if _platform == "linux":
+        seconds_up = sub.check_output("cat /proc/uptime | cut -d' ' -f1", shell=True)
+    elif _platform == "darwin":
+        seconds_up = sub.check_output("uptime | cut -d' ' -f1", shell=True)
+    elif _platform == "win32":
+        pass
     time_units = ["seconds", "minutes", "hours", "days", "years"]
     time_string = ""
     for quantity, unit in zip(utility.split_seconds(seconds_up), time_units):
