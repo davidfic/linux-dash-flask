@@ -3,7 +3,8 @@ import subprocess as sub
 from subprocess import PIPE
 import requests
 from sys import platform as _platform
-
+import time
+import datetime
 import utility
 
 def get_os():
@@ -61,7 +62,13 @@ def get_uptime():
     if _platform.startswith("linux"): # linux, linux2, linux3 etc
         seconds_up = sub.check_output("cat /proc/uptime | cut -d' ' -f1", shell=True)
     elif _platform == "darwin":
-        seconds_up = sub.check_output("uptime | cut -d' ' -f1", shell=True)
+        days_up = sub.check_output("uptime | cut -d' ' -f4", shell=True)
+        hour_minute_up = sub.check_output("uptime | cut -d' ' -f6", shell=True)
+        hm_up = hour_minute_up[:-2]+":00"
+        seconds_from_days  = (60*60*24)*int(days_up)
+        x = time.strptime('10:13:00'.split(',')[0],'%H:%M:%S')
+        seconds = datetime.timedelta(hours=x.tm_hour,minutes=x.tm_min,seconds=x.tm_sec).total_seconds()
+        seconds_up = seconds + seconds_from_days
     elif _platform == "win32":
         pass
     else:
@@ -69,6 +76,7 @@ def get_uptime():
 
     time_units = ["seconds", "minutes", "hours", "days", "years"]
     time_string = ""
+    print "seconds up is:" , seconds_up
     for quantity, unit in zip(utility.split_seconds(seconds_up), time_units):
         time_string = "{0} {1} {2}".format(quantity, unit, time_string)
     return time_string
