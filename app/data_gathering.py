@@ -58,12 +58,15 @@ def get_running_processes():
     pass
 
 def get_uptime():
-    if _platform == "linux":
+    if _platform.startswith("linux"): # linux, linux2, linux3 etc
         seconds_up = sub.check_output("cat /proc/uptime | cut -d' ' -f1", shell=True)
     elif _platform == "darwin":
         seconds_up = sub.check_output("uptime | cut -d' ' -f1", shell=True)
     elif _platform == "win32":
         pass
+    else:
+        return "Unexpected system type: " + _platform
+
     time_units = ["seconds", "minutes", "hours", "days", "years"]
     time_string = ""
     for quantity, unit in zip(utility.split_seconds(seconds_up), time_units):
