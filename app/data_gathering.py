@@ -76,7 +76,21 @@ def get_uptime():
 
     time_units = ["seconds", "minutes", "hours", "days", "years"]
     time_string = ""
-    print "seconds up is:" , seconds_up
+    
     for quantity, unit in zip(utility.split_seconds(seconds_up), time_units):
         time_string = "{0} {1} {2}".format(quantity, unit, time_string)
     return time_string
+
+def get_ram():
+
+
+    if _platform == "darwin":
+        total_memory_in_bytes = sub.check_output("sysctl hw.memsize", shell=True)        
+        total_memory_in_megabytes = int(total_memory_in_bytes[12:]) / 1048576
+        return total_memory_in_megabytes
+    elif _platform.startswith("linux"):
+        #use free
+        pass
+    
+
+

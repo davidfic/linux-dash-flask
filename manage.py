@@ -28,6 +28,9 @@ def get_ip():
 def get_uptime():
     return data_gathering.get_uptime()
 
-
+@manager.command
+def get_ram():
+    return data_gathering.get_ram()
+    
 if __name__ == '__main__':
         manager.run()

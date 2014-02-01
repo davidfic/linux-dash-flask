@@ -13,4 +13,5 @@ def index():
         disk=dg.get_disk_usage(),
         os=dg.get_os(),
         ip=dg.get_ip(),
-        uptime=dg.get_uptime())
+        uptime=dg.get_uptime(),
+        ram=dg.get_ram())
